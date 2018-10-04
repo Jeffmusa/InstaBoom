@@ -1,0 +1,26 @@
+{% if user.is_authenticated %}
+<ul>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown"  aria-expanded="false"><a class="fa fa-user" href="#"></a>
+             
+          </a>
+    <ul class="dropdown-menu" role="menu">
+      <li>
+        <a href="{%url 'welcome'%}">Home</a>
+      </li>
+      <li>
+        <a href="/accounts/password/change">Change Password</a>
+      </li>
+      <li>
+        <a href="/logout">Logout</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+{% else %}
+<li>
+  <a class='btn btn-default' href="/accounts/login">Login</a>
+</li>
+
+{% endif %}
+

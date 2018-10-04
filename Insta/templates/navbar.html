@@ -11,36 +11,10 @@
     <form class="search-section">
       <input class="input-search" type="search" name="search" placeholder=""/>
     </form>
-    <section class="icons-section"><a class="fa fa-compass" href="#"></a><a class="fa fa-heart" href="#"></a>
+    <section class="icons-section"><a class="fa fa-compass" href="#"></a><a class="fa fa-heart" href="#"></a><a class="fa fa-user" href="#"></a>
     
        
-            {% if user.is_authenticated %}
-            <ul>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown"  aria-expanded="false"><a class="fa fa-user" href="#"></a>
-                         
-                      </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li>
-                    <a href="{%url 'welcome'%}">Home</a>
-                  </li>
-                  <li>
-                    <a href="/accounts/password/change">Change Password</a>
-                  </li>
-                  <li>
-                    <a href="/logout">Logout</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            {% else %}
-            <li>
-              <a class='btn btn-default' href="/accounts/login">Login</a>
-            </li>
-
-            {% endif %}
-          
-    
+           
     </section>
   </nav>
 
@@ -63,7 +37,7 @@
 .navbar .logo-section div {
   align-self: stretch;
   width: 1px;
-  background: rgb(0, 0, 0);
+  background: rgb(3, 0, 0);
   margin: 0 20px;
 }
 .navbar .icons-section .fa {
