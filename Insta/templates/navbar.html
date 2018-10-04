@@ -1,8 +1,12 @@
 
 <nav class="navbar">
-    <section class="logo-section"><img class="logo" src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png"/>
-      <div></div><img class="logoname" src="https://instaboom.co/wp-content/uploads/2017/12/logo-instaboom-white.png"/>
+    <section class="logo-section"><a href="{% url 'welcome' %}"><img class="logo" src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png"/></a>
+      <div></div><a href="{% url 'welcome' %}"><img class="logoname" src="https://instaboom.co/wp-content/uploads/2017/12/logo-instaboom-white.png"/></a>
+
     </section>
+    
+       
+   
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="sttlesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <form class="search-section">
@@ -20,7 +24,8 @@
   align-items: center;
   padding: 20px;
   border-bottom: 2px solid #ddd;
-  background: linear-gradient(rgb(233, 64, 64), rgba(95, 58, 231, 0.5));
+  background-color: rgb(59, 51, 55)
+  /* background: linear-gradient(rgb(236, 1, 165), rgba(58, 231, 58, 0.5)); */
 }
 .navbar .logo-section {
   display: flex;
