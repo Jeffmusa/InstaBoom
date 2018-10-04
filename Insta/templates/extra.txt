@@ -1,0 +1,1 @@
+{{date|date:"l d-F Y"}}>>>>>>>>>>>>>>>>>This one is for date
