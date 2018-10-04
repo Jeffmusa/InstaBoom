@@ -1,10 +1,33 @@
+{% load bootstrap3 %} 
+{% load static %} 
+{% load staticfiles %}
 
-{% load bootstrap3 %}
-{% load static%}
+<!DOCTYPE html>
+<html>
 
-{% include "navbar.html" %}
-{%block content %}{%endblock%}
-{% block scripts %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-{% bootstrap_javascript %}
-{% endblock %}
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <link rel="shortcut icon" href="https://i.pinimg.com/originals/a0/b3/0b/a0b30b7b751b30961fd4667b9c68b2ac.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block styles %}
+        {% bootstrap_css %}
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="sttlesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    {% endblock %}
+
+</head>
+
+<body>
+    {% include "navbar.html" %}
+    {%block content %}{%endblock%} 
+    
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+        {% bootstrap_javascript %} 
+        <script src="main.js"></script>
+    {% endblock %}
+</body>
+
+</html>
