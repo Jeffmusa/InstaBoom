@@ -5,15 +5,15 @@
   <div class="row">
     <!-- Empty div -->
     <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="margin-top:40px">
       {% if form.errors %}
         <p> Password or Username is incorrect </p>
       {% endif %}
       <div class="panel panel-default">
 
-        <div class="panel-heading">
-          <h3 class="text-center">Sign In</h3>
-        </div>
+          <h3 class="text-center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="" style="height:50%; width:50%;">
+          </h3>
+      
         <div class="panel-body">
 
           <form  action="/accounts/login/" method="post">
@@ -21,8 +21,11 @@
             {% bootstrap_form form%}
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+              <input type="submit" class="btn btn-primary btn-md" value="Login">
             </div>
+            <div class="section">
+                    <p class="forgot">Don't have an account? <a href="/accounts/register">Sign-Up</a></p>
+                </div>
 
             <input type="hidden" name="next" value="{{next}}">
 
