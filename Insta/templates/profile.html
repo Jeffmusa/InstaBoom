@@ -1,12 +1,12 @@
 {% extends 'base.html'%} 
 
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
 {% block content %}
     {{ block.super }}
 
-{% if user.is_authenticated %}
+<!-- {% if user.is_authenticated %}
 <ul>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown"  aria-expanded="false"><a class="fa fa-user" href="#"></a>
@@ -30,6 +30,71 @@
   <a class='btn btn-default' href="/accounts/login">Login</a>
 </li>
 
-{% endif %}
+{% endif %} -->
+<div class="container">
+  <div class="row" style="margin-top:20px;">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+        <img src="https://scontent-jnb1-1.cdninstagram.com/vp/70d3f598ca48f07e3031574947e5f7be/5C54E165/t51.2885-19/s150x150/42744587_257631381565859_6305777701592498176_n.jpg" alt="Avatar" class="img-responsive" style="border-radius:50%; border-radius: 50%; height:170px;">
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+        <h3>Jeffreylamar777 <button class="btn btn-outline">Edit Profile</button></h3>
+        <div class="col-md-4">0 Posts</div>
+        <div class="col-md-4">0 Followers</div>
+        <div class="col-md-4">0 Following</div>
+        
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <hr>
+  <div class="row">
+  <ul class="nav" id="my" role="tablist">
+    <div class="col-md-3">
+      <li class="nav-item">
+    <h3>    <a style="text-decoration:none"  class="nav-link active" href="#posts" data-toggle="tab" role="tab" aria-controls="posts" aria-selected="true">
+            Posts
+        </a></h3>
+        <div class="tab-pane fade show active" id="posts" role="tabpanel">
+            <H1>POSTS</H1>       
+             </div>
+      </li>
+    </div>
+    <div class="col-md-3">
+      <li class="nav-item">
+     <h3>   <a style="text-decoration:none"  class="nav-link" href="#liked" data-toggle="tab" role="tab" aria-controls="liked" aria-selected="false">
+            Liked
+        </a></h3>
+         
+        <div class="tab-pane fade" id="liked" role="tabpanel">
+            <H1>LIKED</H1>
+                    </div>
+      </li>
+    </div>
+    <div class="col-md-3">
+        <li class="nav-item">
+       <h3>   <a style="text-decoration:none" class="nav-link" href="#tgd" data-toggle="tab" role="tab" aria-controls="liked" aria-selected="false">
+              Tagged
+          </a></h3>
+
+        <div class="tab-pane fade" id="tgd" role="tabpanel">
+            <H1>Tagged</H1>
+                    </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+  <!-- <div class="container">
+      <div class="row">
+    <div class="tab-content row col-12" id="myContent">
+     
+      </div>
+  </div>
+</div> -->
+</div>
+
+
+
 
 {% endblock %}
