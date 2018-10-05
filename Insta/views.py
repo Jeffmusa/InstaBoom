@@ -9,3 +9,8 @@ from django.contrib.auth.decorators import login_required
 def welcome(request):
     date = dt.date.today()
     return render(request, 'home.html',{"date": date,})
+
+
+def profile(request):
+    date = dt.date.today()
+    return render(request, 'profile.html',{"date": date,})

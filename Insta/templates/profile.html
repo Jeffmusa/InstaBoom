@@ -1,3 +1,11 @@
+{% extends 'base.html'%} 
+
+
+
+
+{% block content %}
+    {{ block.super }}
+
 {% if user.is_authenticated %}
 <ul>
   <li class="dropdown">
@@ -24,3 +32,4 @@
 
 {% endif %}
 
+{% endblock %}

@@ -11,10 +11,15 @@
     <form class="search-section">
       <input class="input-search" type="search" name="search" placeholder=""/>
     </form>
-    <section class="icons-section"><a class="fa fa-compass" href="#"></a><a class="fa fa-heart" href="#"></a><a class="fa fa-user" href="#"></a>
-    
-       
-           
+    <section class="icons-section"><a class="fa fa-compass" href="#"></a><a class="fa fa-heart" href="#"></a>
+        {% if user.is_authenticated %}
+<a class="fa fa-user" href="/profile"></a>
+                </a>
+                {% else %}
+                <li>
+                  <a class='btn btn-default' href="/accounts/login">Login</a>
+                </li>
+                {% endif %}
     </section>
   </nav>
 
