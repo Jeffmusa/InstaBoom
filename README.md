@@ -3,9 +3,10 @@
 Instaboom is a python web app done with Django that allows users to share their best photos and have fun.
 
 ## Getting Started
-To get  started you will need to clone this repo at ```https://github.com/Jeffmusa/InstaBoom````
-
+To get  started you will need to clone this repo.
 ```
+git clone https://github.com/Jeffmusa/InstaBoom
+
 cd  InstaBoom
 ```
 
