@@ -48,7 +48,7 @@ Only to be sure of what the app does.
 ## Deployment
 
 Here is a documentation on how to deploy this app to heroku.
-You can find it on [this link] (https://github.com/Jeffmusa/Deployment_to_heroku_django).
+You can find it on [this link](https://github.com/Jeffmusa/Deployment_to_heroku_django).
 
 ## Built With
 
