@@ -54,9 +54,9 @@ You can find it on [this link] (https://github.com/Jeffmusa/Deployment_to_heroku
 
 * [Python3.6.5](https://docs.python.org/3/)
 * [Django MVC framework](https://docs.djangoproject.com/en/2.1/) - The web framework used
-    - HTML, CSS and Bootstrap
 * [Postgresql](https://www.postgresql.org/docs/) - For databases
 * [Heroku](https://dashboard.heroku.com) -For hosting the app
+* HTML, CSS and Bootstrap
 
 
 
