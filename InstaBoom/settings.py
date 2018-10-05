@@ -29,6 +29,12 @@ ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = 'welcome'
 
 
+
+
+UPLOADCARE = {
+    'pub_key': '',
+    'secret': '',
+}
 # Application definition
 
 INSTALLED_APPS = [

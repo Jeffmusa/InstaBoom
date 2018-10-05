@@ -16,8 +16,8 @@ class Profile(models.Model):
     def delete_image(self):
         self.delete()
 
-    def update_image(self):
-        self.update()
+    # def update_image(self):
+    #     self.update()
 
 
 
@@ -41,5 +41,5 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
-    def update_caption(self):
-        self.update()
+    # def update_caption(self):
+    #     self.update()

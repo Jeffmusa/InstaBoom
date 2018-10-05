@@ -1,72 +1,74 @@
-
 <nav class="navbar">
-    <section class="logo-section"><a href="{% url 'welcome' %}"><img class="logo" src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png"/></a>
-      <div></div><a href="{% url 'welcome' %}"><img class="logoname" src="https://instaboom.co/wp-content/uploads/2017/12/logo-instaboom-white.png"/></a>
+  <section class="logo-section"><a href="/"><img class="logo" src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png"/></a>
+    <div></div><a href="/"><img class="logoname" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png"/></a>
+  </section>
 
-    </section>
-    
-       
-   
-    
-    <form class="search-section">
-      <input class="input-search" type="search" name="search" placeholder=""/>
-    </form>
-    <section class="icons-section"><a class="fa fa-compass" href="#"></a><a class="fa fa-heart" href="#"></a>
-        {% if user.is_authenticated %}
-<a class="fa fa-user" href="/profile"></a>
-                </a>
-                {% else %}
-                <li>
-                  <a class='btn btn-default' href="/accounts/login">Login</a>
-                </li>
-                {% endif %}
-    </section>
-  </nav>
 
-  <style>
-  
-  
+
+
+  <form class="search-section">
+    <input class="input-search" type="search" name="search" placeholder="" />
+  </form>
+  <section class="icons-section"><a class="fa fa-compass" href="#"></a><a class="fa fa-heart" href="#"></a><a class="fa fa-upload" href="/upload"></a>
+    {% if user.is_authenticated %}
+    <a class="fa fa-user" href="/profile"></a>
+    </a>
+    {% else %}
+    <li>
+      <a class='btn btn-default' href="/accounts/login">Login</a>
+    </li>
+    {% endif %}
+
+</nav>
+
+<style>
   .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 2px solid #ddd;
-  background-color: rgb(243, 239, 241)
-  /* background: linear-gradient(rgb(236, 1, 165), rgba(58, 231, 58, 0.5)); */
-}
-.navbar .logo-section {
-  display: flex;
-  align-items: center;
-}
-.navbar .logo-section div {
-  align-self: stretch;
-  width: 1px;
-  background: rgb(3, 0, 0);
-  margin: 0 20px;
-}
-.navbar .icons-section .fa {
-  text-decoration: none;
-  color: rgb(10, 0, 0);
-  font-size: 2rem;
-  margin: 0 10px;
-}
-.navbar .logo {
-  width: 40px;
-}
-.navbar .logoname {
-  width: 130px;
-  color: black
-}
-.navbar .input-search {
-  padding: 10px;
-  text-align: center;
-  border-radius: 5px;
-  border: 2px solix #ddd;
-  outline: 0;
-}
-.navbar .input-search:focus {
-  text-align: left;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #ddd;
+    background-color: rgb(243, 239, 241)
+    /* background: linear-gradient(rgb(236, 1, 165), rgba(58, 231, 58, 0.5)); */
+  }
 
-  </style>
+  .navbar .logo-section {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar .logo-section div {
+    align-self: stretch;
+    width: 1px;
+    background: rgb(3, 0, 0);
+    margin: 0 20px;
+  }
+
+  .navbar .icons-section .fa {
+    text-decoration: none;
+    color: rgb(10, 0, 0);
+    font-size: 2rem;
+    margin: 0 10px;
+  }
+
+  .navbar .logo {
+    width: 40px;
+  }
+
+  .navbar .logoname {
+    width: 130px;
+    color: black
+  }
+
+  .navbar .input-search {
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solix #ddd;
+    outline: 0;
+  }
+
+  .navbar .input-search:focus {
+    text-align: left;
+  }
+</style>
