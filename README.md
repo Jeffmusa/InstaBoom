@@ -43,17 +43,11 @@ python3.6 manage.py test
 The tests are to check tha app's functionality.
 Only to be sure of what the app does.
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Here is a documentation on how to deploy this app to heroku.
+You can find it on [this link] ()
 
 ## Built With
 
