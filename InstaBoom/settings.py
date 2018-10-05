@@ -21,6 +21,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '0z&$0i$%3t+(*qui)u$+1n=m26cu&qrow&694k9o-qe$z7-qx2'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'jeffreylamar777@gmail.com'
+EMAIL_HOST_PASSWORD = '123161021'
+EMAIL_PORT = 587
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

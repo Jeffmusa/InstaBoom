@@ -1,5 +1,5 @@
 {% extends 'base.html'%} {% load bootstrap3 %} {% load staticfiles %}
- 
+{{form.media}}
 {% block content %}
 
   <form  action="{%url 'upload'%}" method="post" enctype="multipart/form-data">
