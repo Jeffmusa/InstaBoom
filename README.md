@@ -47,13 +47,15 @@ Only to be sure of what the app does.
 ## Deployment
 
 Here is a documentation on how to deploy this app to heroku.
-You can find it on [this link] ()
+You can find it on [this link] (https://github.com/Jeffmusa/Deployment_to_heroku_django).
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Python3.6.5](https://docs.python.org/3/)
+* [Django MVC framework](https://docs.djangoproject.com/en/2.1/) - The web framework used
+    - HTML, CSS and Bootstrap
+* [Postgresql](https://www.postgresql.org/docs/) - For databases
+* [Heroku](https://dashboard.heroku.com) -For hosting the app
 
 ## Contributing
 
