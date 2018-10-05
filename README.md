@@ -62,7 +62,7 @@ You can find it on [this link] (https://github.com/Jeffmusa/Deployment_to_heroku
 
 ## Authors
 
-* **Jeff Musa** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Jeff Musa** 
 
 
 
