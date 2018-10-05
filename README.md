@@ -1,48 +1,47 @@
 #  Instaboom
 
-One Paragraph of project description goes here
+Instaboom is a python web app done with Django that allows users to share their best photos and have fun.
 
 ## Getting Started
+To get  started you will need to clone this repo at ```https://github.com/Jeffmusa/InstaBoom````
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+```
+cd  InstaBoom
+```
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Here is what makes the app to run perfectly.
 
 ```
-Give examples
+- Django Framework
+- Python3.6
+- Postgres
+- Python virtualenv
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Activate virtual environment using python3.6 as default handler virtualenv -p /usr/bin/python3.6 venv && source venv/bin/activate
 
-Say what the step will be
+Install dependancies that will create an environment for the app to run pip3 install -r requirements.txt
 
-```
-Give the example
-```
 
-And repeat
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+Make sure you have Python3.6.5 installed to avoid challenges.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Run tests with this command:
+```
+python3.6 manage.py test
+```
+
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
+The tests are to check tha app's functionality.
+Only to be sure of what the app does.
 
 ### And coding style tests
 
