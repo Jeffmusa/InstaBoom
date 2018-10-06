@@ -3,7 +3,7 @@ import datetime as dt
 from .models import *
 from django.http  import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .forms import ImageForm
+from .forms import ImageForm,ProfileForm
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
@@ -79,9 +79,18 @@ def welcome(request):
 
 
 def profile(request):
-    date = dt.date.today()
-    return render(request, 'profile.html',{"date": date,})
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+        return redirect('welcome')
 
+    else:
+        form = ProfileForm()
+    return render(request, 'profile.html', {"form": form})
 
 def upload(request):
     current_user = request.user
@@ -91,7 +100,7 @@ def upload(request):
             image = form.save(commit=False)
             image.user = current_user
             image.save()
-        return redirect('upload')
+        return redirect('welcome')
 
     else:
         form = ImageForm()
