@@ -4,21 +4,27 @@
 <div class="container">
 
     <div class="row">
+        <div class="col-md-2"></div>
+            <div class="col-md-4">
         {% for up in images %}
 
-        <div class="thumbnail">
-
+        <div class="card" style="width:500px">
+        
             
-            <a href="/profile"> {{ up.username}}</a>
+            <a href="/profile"> {{ up.user.username}}</a>
 
             <img src="{{up.image.url}}" alt="Image" style="height:400px; width:500px">
 
+<hr>
 
 
             <span>Posted {{up.pub_date|timesince}} ago </span>
-            <br><br><br>
+          
         </div>
+        <br><br><br>
         {% endfor %}
     </div>
+    <div class="col-md-6"></div>
+</div>
 </div>
 {% endblock %}
