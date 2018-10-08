@@ -1,4 +1,4 @@
-{% extends 'base.html'%}{% load staticfiles %}
+{% extends 'base.html'%}{% load staticfiles %} 
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> {% block content %} {{ block.super }}
 <div class="container">
@@ -8,11 +8,12 @@
             <div class="col-md-4">
         {% for up in images %}
 
-        <div class="card" style="width:500px">
+        <div class="panel" style="width:500px">
         
-            
-            <a href="/profile"> {{ up.user.username}}</a>
-
+            <div class="card-header" style="padding:20px; ">
+            <a href="/profile"> {{ up.name}}</a>
+        </div>
+        <br>
             <img src="{{up.image.url}}" alt="Image" style="height:400px; width:500px">
 
 <hr>
