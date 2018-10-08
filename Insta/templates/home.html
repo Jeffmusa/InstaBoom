@@ -12,8 +12,8 @@
         <div class="panel" style="width:500px">
         
             <div class="card-header" style="padding:20px; ">
-            <a href="/profile">  {{user.username}} </a>
-           
+            <a href="/profile/{{up.user.username}}">  {{ up.user.username }} </a>
+           <img  src="{{user.profile.pro_photo.url}}" width="50" height="50" alt="Card image cap">
     
            
         </div>
@@ -22,7 +22,7 @@
 
 <hr>
 
-
+            <p><strong>{{ up.user.username }}</strong>:{{up.caption}}</p>
             <span>Posted {{up.pub_date|timesince}} ago </span>
            
          
@@ -33,7 +33,7 @@
                 {% bootstrap_form comment_form %}
                 <input type="submit" class="btn btn-primary btn-sm" value="comment">
             </form>
-            {% for comm in up.comments.all %}
+            {% for comm in up.post.comments.all %}
         </b>:{{comm.comment}}
           {% endfor %}
         </div>
