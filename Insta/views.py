@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 import datetime as dt
-from .models import *
+from .models import Image,Profile
 from django.http  import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .forms import ImageForm,ProfileForm
@@ -26,6 +26,8 @@ def signup(request):
             user = form.save(commit=False)
             user.is_active = False
             user.save()
+            profile=Profile(user=user)
+            profile.save()            
             current_site = get_current_site(request)
             mail_subject = 'Activate your instagram account.'
             message = render_to_string('acc_active_email.html', {
@@ -63,36 +65,30 @@ def activate(request, uidb64, token):
 
 
 
-
-
-
-
-
-
-
-
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def welcome(request):
     date = dt.date.today()
-    return render(request, 'home.html',{"date": date,})
+    images = Image.objects.all()
+    return render(request, 'home.html',{"date": date, "images":images})
 
 
 def profile(request):
-    current_user = request.user
+    profile = Profile.objects.filter(user=request.user)
+    image_form = ProfileForm()
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
-        if form.is_valid():
-            profile = form.save(commit=False)
-            profile.user = current_user
-            profile.save()
-        return redirect('welcome')
+        image_form =ProfileForm(request.POST,request.FILES,instance=request.user.profile)
+        if image_form.is_valid:
+            image_form.save()
+        else:
+            image_form = ProfileForm()
+            return render(request, 'profile.html', {"image_form": image_form,"profile":profile})
+    return render(request, 'profile.html', {"image_form": image_form,"profile":profile})
 
-    else:
-        form = ProfileForm()
-    return render(request, 'profile.html', {"form": form})
+    
 
 def upload(request):
+    # upload = Image.objects.all()
     current_user = request.user
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
@@ -100,8 +96,8 @@ def upload(request):
             image = form.save(commit=False)
             image.user = current_user
             image.save()
-        return redirect('welcome')
+        return redirect('/')
 
     else:
         form = ImageForm()
-    return render(request, 'upload.html', {"form": form})
+    return render(request, 'upload.html', {"form": form , "upload": upload})

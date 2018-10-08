@@ -1,95 +1,72 @@
-{% extends 'base.html'%} {% load staticfiles %} {{form.media}}
+{% extends 'base.html'%} {% load staticfiles %} {{form.media}} {% load bootstrap3 %}
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> {% block content %} {{ block.super }}
 
 
- 
-
-
-
-
-
-
-
-
-
-<!-- {% if user.is_authenticated %}
-
-
-  
-<ul>
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown"  aria-expanded="false"><a class="fa fa-user" href="#"></a>
-             
-          </a>
-    <ul class="dropdown-menu" role="menu">
-      <li>
-        <a href="{%url 'welcome'%}">Home</a>
-      </li>
-      <li>
-        <a href="/accounts/password/change">Change Password</a>
-      </li>
-      <li>
-        <a href="/logout">Logout</a>
-      </li>
-    </ul>
-  </li>
-</ul>
-{% else %}
-<li>
-  <a class='btn btn-default' href="/accounts/login">Login</a>
-</li>
-
-{% endif %} -->
 <div class="container">
-  <div class="row" style="margin-top:20px;">
-    <div class="col-md-1"></div>
-    <div class="col-md-4">
-      <img src="https://scontent-jnb1-1.cdninstagram.com/vp/70d3f598ca48f07e3031574947e5f7be/5C54E165/t51.2885-19/s150x150/42744587_257631381565859_6305777701592498176_n.jpg"  alt="Avatar" class="img-responsive" style="border-radius:50%; height:170px;">
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1"></div>
+    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+      {% if user.profile.pro_photo.url %}
+      <img src="{{user.profile.pro_photo.url}}" alt="Avatar" class="img-responsive" style="border-radius:100%; height:150px; width: 150px;">
+      {% else %}
+      <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:170px;">
+{% endif %}
     </div>
-    <div class="col-md-4">
+
+    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
       <div class="row">
-          {% if user.is_authenticated %}
-        <h3>  {{user.username}} <a class="btn btn-lg btn-edit" href="#" style="color:black"><h4>Edit Profile</h4></a>
-            <span class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal"></span>
+        {% if user.is_authenticated %}
+        <h3> {{user.username}} <a class="btn btn-lg btn-edit" href="#" style="color:black"><h4><span data-toggle="modal" data-target="#edit">Edit Profile</span> </h4></a>
+          <div class="modal fade" id="edit" role="dialog" style="background-color:rgb(230, 80, 80)">
+            <div class="modal-dialog">
+
+
+              <form action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
+                {%csrf_token%} {% bootstrap_form image_form %}
+                <input type="submit" class="btn btn-success btn-lg" value="Post">
+              </form>
+            </div>
+          </div>
+
+          <span class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#myModal"></span>
         </h3>
-        <div class="col-md-4">0 Posts</div>
-        <div class="col-md-4">0 Followers</div>
-        <div class="col-md-4">0 Following</div>
+        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">{{image|length}} posts</div>
+        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">0 Followers</div>
+        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">0 Following</div>
+        <h4>{{user.bio}}</h4>
+      </div>
+
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content" style="padding:90px; margin-top:60px;">
+            <ul class="text-center">
+              <div class="modal-header">
+                <li>
+                  <a href="/accounts/password/change" style="text-decoration:none;color:black">Change Password</a>
+                </li>
+
+
+                <li>
+                  <a href="/logout" style="text-decoration:none;color:black">Logout</a>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
 
       </div>
-      <form action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
-        {%csrf_token%} {% bootstrap_form form%}
-      <div class="text-center">  <input type="submit" class="btn btn-primary" value="Post"></div>
-      </form>
-      <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog">
-          
-            <!-- Modal content-->
-            <div class="modal-content" style="padding:90px; margin-top:60px;">
-              <ul class="text-center" >
-                <div class="modal-header">
-                <li>
-                    <a href="/accounts/password/change"  style="text-decoration:none;color:black">Change Password</a>
-                  </li>
-               
-                
-                  <li >
-                    <a href="/logout" style="text-decoration:none;color:black">Logout</a>
-                  </li>
-                 </div>
-                </ul>
-              </div>
-            </div>
-            
-          </div>
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3"></div>
   </div>
   <hr>
   <div class="row">
     <ul class="nav" id="my" role="tablist">
-      <div class="col-md-3">
+      <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
         <li class="nav-item">
           <h3> <a style="text-decoration:none" class="nav-link active" href="#posts" data-toggle="tab" role="tab" aria-controls="posts"
               aria-selected="true">
@@ -100,7 +77,7 @@
           </div>
         </li>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
         <li class="nav-item">
           <h3> <a style="text-decoration:none" class="nav-link" href="#liked" data-toggle="tab" role="tab" aria-controls="liked"
               aria-selected="false">
@@ -112,7 +89,7 @@
           </div>
         </li>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3">
         <li class="nav-item">
           <h3> <a style="text-decoration:none" class="nav-link" href="#tgd" data-toggle="tab" role="tab" aria-controls="liked"
               aria-selected="false">
@@ -132,6 +109,5 @@
 <li>
   <a class='btn btn-default' href="/accounts/login">Login</a>
 </li>
-{% endif %}
-
-{% endblock %}
+</div>
+{% endif %} {% endblock %}

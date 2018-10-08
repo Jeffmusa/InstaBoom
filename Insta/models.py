@@ -1,11 +1,14 @@
 from django.db import models
 from tinymce.models import HTMLField
+from django.contrib.auth.models import User
 
 
 # Create your models here.
 class Profile(models.Model):
-    pro_photo = models.ImageField(upload_to = 'images/')
+    pro_photo = models.ImageField(upload_to = 'images/',null=True)
+    name = models.CharField(max_length =30,null=True)
     bio = models.TextField(null=True)
+    user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile',null=True)
 
     def __str__(self):
         return self.bio
@@ -40,6 +43,11 @@ class Image(models.Model):
 
     def delete_image(self):
         self.delete()
+
+    @classmethod
+    def upl(cls):
+        uploads = cls.objects.all()
+        return uploads
 
     # def update_caption(self):
     #     self.update()
