@@ -29,7 +29,7 @@ class Image(models.Model):
     name = models.CharField(max_length =30,null=True)
     caption =  HTMLField()
     likes = models.CharField(max_length =30,null=True)
-    comments =models.CharField(max_length =30,null=True)
+    commnts =models.CharField(max_length =30,null=True)
     profile = models.ForeignKey(Profile, null=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to = 'images/')
@@ -44,6 +44,9 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
+    class Meta:
+        ordering = ["pub_date"]
+
     @classmethod
     def upl(cls):
         uploads = cls.objects.all()
@@ -51,3 +54,11 @@ class Image(models.Model):
 
     # def update_caption(self):
     #     self.update()
+
+class Comment(models.Model):
+    comment = models.CharField(max_length =30,null=True)
+    user = models.ForeignKey(User,related_name='comments',null=True)
+    post = models.ForeignKey(Image,related_name='comments',null=True)
+
+    def __str__(self):
+        return self.comment

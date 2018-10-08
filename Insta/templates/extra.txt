@@ -1,1 +1,41 @@
 {{date|date:"l d-F Y"}}>>>>>>>>>>>>>>>>>This one is for date
+
+comment form
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['text'].widget=forms.TextInput()
+        self.fields['text'].widget.attrs['placeholder']='Add a comment...'
+
+    class Meta:
+        model = Comment
+        fields = ('text',)
+
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = ['user', 'image']
+
+
+
+
+
+
+comment view function 
+
+def comment(request,id):
+    upload = Image.objects.get(id=id)
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.user = request.user
+            comment.post=post
+            comment.save()
+        return redirect('/')
+
+    else:
+        comment_form = CommentForm()
+    return render(request, 'upload.html', {"comment_form": comment_form , "upload": upload})

@@ -3,7 +3,7 @@ import datetime as dt
 from .models import Image,Profile
 from django.http  import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .forms import ImageForm,ProfileForm
+from .forms import ImageForm,ProfileForm,CommentForm
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
@@ -69,11 +69,13 @@ def activate(request, uidb64, token):
 @login_required(login_url='/accounts/login/')
 def welcome(request):
     date = dt.date.today()
+    comment_form = CommentForm()
     images = Image.objects.all()
-    return render(request, 'home.html',{"date": date, "images":images})
+    return render(request, 'home.html',{"date": date,"comment_form":comment_form, "images":images})
 
 
 def profile(request):
+    images = Image.objects.all()
     profile = Profile.objects.filter(user=request.user)
     image_form = ProfileForm()
     if request.method == 'POST':
@@ -82,8 +84,8 @@ def profile(request):
             image_form.save()
         else:
             image_form = ProfileForm()
-            return render(request, 'profile.html', {"image_form": image_form,"profile":profile})
-    return render(request, 'profile.html', {"image_form": image_form,"profile":profile})
+            return render(request, 'profile.html', {"image_form": image_form,"profile":profile,"images":images})
+    return render(request, 'profile.html', {"image_form": image_form,"profile":profile,"images":images})
 
     
 
@@ -101,3 +103,17 @@ def upload(request):
     else:
         form = ImageForm()
     return render(request, 'upload.html', {"form": form , "upload": upload})
+
+
+def comment(request,id):
+    upload = Image.objects.get(id=id)
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.user = request.user
+            comment.image= upload
+            comment.save()
+        return redirect('/')
+
+  
