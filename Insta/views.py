@@ -118,17 +118,13 @@ def comment(request,id):
 
 
 def search_results(request):
-    user = User.objects.all()
     
-    if 'user' in request.GET and request.GET["user"]:
-        search_term = request.GET.get("user")
-        searched_users = User.search_username(username=search_term)
-        message = f"{search_term}"
-
-        return render(request, 'search.html',{"message":message,"searched_users": searched_users})
-
+    if 'user' in request.GET or request.GET['user']:
+        search_item = request.GET.get('user')
+        searched_users = User.objects.filter(username=search_item)
+        
+        message = f"{search_item}"
+        return render(request, 'search.html',{"message":message,"users": searched_users})
     else:
-        message = "Please search for a valid user"
-        return render(request, 'search.html',{"message":message,"user":user})
-
-  
+        message = "You haven't searched for any user"
+        return render(request, 'search.html',{"message":message})
