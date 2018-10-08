@@ -7,9 +7,9 @@
 
   <div class="row">
     {% if searched_users %}
-    <h1 class="text-center">{{message}}</h1>
+    <h1 class="text-center">Found {{searched_users|length}} related searches for {{message}}</h1>
     {% else %}
-      <h2> Found 0 users</h2>
+      <h2> There are no related users </h2>
     {% endif %}
 
   </div>
@@ -17,9 +17,12 @@
   <div class="row">
 
   {% for user in searched_users %}
+<div class="row">
+    <a href="/profiles/{{user.id}}" >
+  <h1 class="text-left">{{user.username}}</h1></a>
+  <img  src="{{user.profile.pro_photo.url}}"  alt="" style="border-radius:100px;height:250px;width:250px;">
 
-  {{user.username}}
-  <img  src="{{user.profile.pro_photo.url}}"  alt="">
+   </div>
 
 
 

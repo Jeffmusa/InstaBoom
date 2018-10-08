@@ -77,6 +77,8 @@ def welcome(request):
 def profile(request):
     images = Image.objects.all()
     profile = Profile.objects.filter(user=request.user)
+    current_user = request.user
+    posts = Image.objects.filter(user=current_user)
     image_form = ProfileForm()
     if request.method == 'POST':
         image_form =ProfileForm(request.POST,request.FILES,instance=request.user.profile)
@@ -84,8 +86,8 @@ def profile(request):
             image_form.save()
         else:
             image_form = ProfileForm()
-            return render(request, 'profile.html', {"image_form": image_form,"profile":profile,"images":images})
-    return render(request, 'profile.html', {"image_form": image_form,"profile":profile,"images":images})
+            return render(request, 'profile.html', {"image_form": image_form,"posts":posts,"profile":profile,"images":images})
+    return render(request, 'profile.html', {"image_form": image_form,"posts":posts,"profile":profile,"images":images})
 
     
 
@@ -127,6 +129,11 @@ def search_results(request):
 
     else:
         message = "Please search for a valid user"
-        return render(request, 'search.html',{"message":message,"user":user})
+        return render(request, 'search.html',{"message":message,"searched_users":searched_users})
 
-  
+def profiles(request,id):
+    profile = Profile.objects.get(user_id=id)
+    post=Image.objects.filter(user_id=request.user.id)
+                       
+    return render(request,'pros.html',{"profile":profile,"post":post})
+    

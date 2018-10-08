@@ -1,46 +1,49 @@
-{% extends 'base.html'%} {% load bootstrap3 %} {% load staticfiles %} {{form.media}} 
+{% extends 'base.html'%} {% load bootstrap3 %} {% load staticfiles %} {{form.media}}
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> {% block content %} {{ block.super }}
 <div class="container">
 
     <div class="row">
-         <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2"></div>
+        <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2"></div>
         <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+
+            {% for up in images %}
+
+            <div class="panel" style="width:500px">
+
+                <div class="card-header" style="padding:20px; ">
+                    
+                    {% if up.user.profile.pro_photo %}                                                                                                           
+                  <img src="{{up.user.profile.pro_photo.url}}" alt="Avatar" class="img-responsive" style="border-radius:70%; width:40px;height:40px;"> <a href="/profiles/{{up.user.id}}" style="color:black" ><strong> {{ up.user.username }} </strong></a>
             
-        {% for up in images %}
+                  {% else %}
+                        <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:70px;">
+                        {{ up.user.username }}
+                        {% endif %}
 
-        <div class="panel" style="width:500px">
-        
-            <div class="card-header" style="padding:20px; ">
-            <a href="/profile/{{up.user.id}}">  {{ up.user.username }} </a>
-           <img  src="{{up.user.profile.pro_photo.url}}" width="50" height="50" alt="Card image cap">
-    
-           
+                </div>
+                <br>
+                <img src="{{up.image.url}}" alt="Image" style="height:400px; width:500px">
+                <a href="#comment">
+                <img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-69-512.png" style="height:60px;width:70px">
+            </a>
+                <hr>
+
+                <p><strong>{{ up.user.username }}</strong>:{{up.caption}}</p>
+                <span>Posted {{up.pub_date|timesince}} ago </span>
+
+
+
+                <form id='comment' action="/comment/{{up.id}}" method="post" enctype="multipart/form-data">
+                    {%csrf_token%} {% bootstrap_form comment_form %}
+                    <input type="submit" class="btn btn-primary btn-sm" value="comment">
+                </form>
+                {% for comm in up.comments.all %}
+                </b>:{{comm.comment}} {% endfor %}
+            </div>
+            <br><br><br> {% endfor %}
         </div>
-        <br>
-            <img src="{{up.image.url}}" alt="Image" style="height:400px; width:500px">
-
-<hr>
-
-            <p><strong>{{ up.user.username }}</strong>:{{up.caption}}</p>
-            <span>Posted {{up.pub_date|timesince}} ago </span>
-           
-         
-
-            <form id='comment' action="/comment/{{up.id}}" method="post" enctype="multipart/form-data">
-                {%csrf_token%}
-
-                {% bootstrap_form comment_form %}
-                <input type="submit" class="btn btn-primary btn-sm" value="comment">
-            </form>
-            {% for comm in up.post.comments.all %}
-        </b>:{{comm.comment}}
-          {% endfor %}
-        </div>
-        <br><br><br>
-        {% endfor %}
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6"></div>
     </div>
-     <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6"></div>
-</div>
 </div>
 {% endblock %}

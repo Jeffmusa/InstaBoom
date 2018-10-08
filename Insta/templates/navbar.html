@@ -4,7 +4,7 @@
   </section>
   <form class="search-section" role="search" action="{% url 'search_results' %}">
     <input class="input-search" type="search" name="user" placeholder="Search" >
-  </form >
+  </form>
   <section class="icons-section"><a class="fa fa-compass" href="#"></a><a class="fa fa-heart" href="#"></a><a class="fa fa-upload" href="/upload"></a>
     {% if user.is_authenticated %}
     <a class="fa fa-user" href="/profile"></a>
