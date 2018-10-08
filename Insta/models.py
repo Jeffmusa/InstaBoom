@@ -19,10 +19,7 @@ class Profile(models.Model):
     def delete_image(self):
         self.delete()
 
-    @classmethod
-    def search_users (cls,search_term):
-        users = cls.objects.filter(user__username__icontains=search_term)
-        return users
+    
      
 
     # def update_image(self):
