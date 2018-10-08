@@ -19,6 +19,12 @@ class Profile(models.Model):
     def delete_image(self):
         self.delete()
 
+    @classmethod
+    def search_users (cls,search_term):
+        users = cls.objects.filter(user__username__icontains=search_term)
+        return users
+     
+
     # def update_image(self):
     #     self.update()
 
@@ -30,13 +36,14 @@ class Image(models.Model):
     caption =  HTMLField()
     likes = models.CharField(max_length =30,null=True)
     commnts =models.CharField(max_length =30,null=True)
+    user = models.ForeignKey(User, null=True)
     profile = models.ForeignKey(Profile, null=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to = 'images/')
 
 
     def __str__(self):
-        return self.name
+        return self.user.username
 
     def save_image(self):
         self.save()
@@ -45,7 +52,7 @@ class Image(models.Model):
         self.delete()
 
     class Meta:
-        ordering = ["pub_date"]
+        ordering = ["-id"]
 
     @classmethod
     def upl(cls):

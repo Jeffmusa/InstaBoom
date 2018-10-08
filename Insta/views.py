@@ -116,4 +116,19 @@ def comment(request,id):
             comment.save()
         return redirect('/')
 
+
+def search_results(request):
+    user = User.objects.all()
+    
+    if 'user' in request.GET and request.GET["user"]:
+        search_term = request.GET.get("user")
+        searched_users = User.search_username(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"searched_users": searched_users})
+
+    else:
+        message = "Please search for a valid user"
+        return render(request, 'search.html',{"message":message,"user":user})
+
   

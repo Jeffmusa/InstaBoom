@@ -1,0 +1,29 @@
+
+<link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+
+{%extends base.html'%} 
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if searched_users %}
+    <h1 class="text-center">{{message}} .</h1>
+    {% else %}
+      <h2> Found 0 users</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% for user in searched_users %}
+  {{user.username}}
+
+
+
+  {% endfor %}
+  
+  </div>
+</div>
+{% endblock %}

@@ -5,7 +5,6 @@
 
 <div class="container">
 
-<div class="container">
   <div class="row">
     <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1"></div>
     <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
@@ -36,7 +35,7 @@
         <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">{{images|length}} posts</div>
         <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">0 Followers</div>
         <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">0 Following</div>
-        <h4>{{user.bio}}</h4>
+       
       </div>
 
       <div class="modal fade" id="myModal" role="dialog">
@@ -49,12 +48,12 @@
             <div class="card">
                   <a href="/accounts/password/change" style="text-decoration:none;color:black">Change Password</a>
               </div>
-<br>
 
-              <div class="card">
-                  <a href="/logout" style="text-decoration:none;color:rgb(235, 18, 18)">Logout</a>
+<br>
+                <div class="card">
+                  <a href="/logout" style="text-decoration:none;color:rgb(255, 36, 36)">Logout</a>
               </div>
-              <br>
+<br>
               <div class="card">
                   <a href="/profile" style="text-decoration:none;color:black">Cancel</a>
               </div>
@@ -110,8 +109,8 @@
 
 </div>
 {% else %}
-<li>
+
   <a class='btn btn-default' href="/accounts/login">Login</a>
-</li>
-</div>
+
+
 {% endif %} {% endblock %}

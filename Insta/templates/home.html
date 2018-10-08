@@ -4,16 +4,18 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-2"></div>
-            <div class="col-md-4">
+         <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2"></div>
+        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
             
         {% for up in images %}
 
         <div class="panel" style="width:500px">
         
             <div class="card-header" style="padding:20px; ">
-            <a href="/profile"> {{ up.user.username}}</a>
-            
+            <a href="/profile">  {{user.username}} </a>
+           
+    
+           
         </div>
         <br>
             <img src="{{up.image.url}}" alt="Image" style="height:400px; width:500px">
@@ -38,7 +40,7 @@
         <br><br><br>
         {% endfor %}
     </div>
-    <div class="col-md-6"></div>
+     <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6"></div>
 </div>
 </div>
 {% endblock %}
