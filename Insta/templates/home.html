@@ -55,7 +55,7 @@
                                {% if user.profile.pro_photo %}
      <section><img style="border-radius: 50% ; padding: 0.15rem;" class=" img-circle" src="{{user.profile.pro_photo.url}}" alt="" width="50px" height="50px"> <a href="/profile" style="color:black"><strong> {{user.username}}</strong></a></section>
       {% else %}
-      <section>  <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" width="50px" height="50px" class=" img-circle" style="border-radius:70%; "><strong> {{user.username}}</strong></a></section>
+      <section>  <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" width="50px" height="50px" class=" img-circle" style="border-radius:70%; "><a href="/profile" style="color:black"><strong> {{user.username}}</strong></a></section>
   {% endif %}
                         </div>
                 <div class="div" style="background-color: #eee; margin-left: 120px; margin-top: 50px; width: 300px; height: 300px; ; overflow-x: hidden; overflow-y: scroll;">
