@@ -22,19 +22,22 @@
                 </div>
                 <hr>
                 <img src="{{up.image.url}}" alt="Image" style="height:400px; width:500px">
+              <section>
                 <a href="#comment">
                     <img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-69-512.png" style="height:60px;width:70px">
                 </a>
+             <strong>   {{ up.comments.all|length}}  comments</strong>
+            </section>
                 <hr>
 
                 <p><strong>{{ up.user.username }}</strong>:{{up.caption}}</p>
-                <span>Posted {{up.pub_date|timesince}} ago </span>
-               <h1> {{ up.comments.all|length}} </h1>
+                
+              
 
                 {% for comm in up.comments.all %}
-                <p>{{comm.comment}} </p>
+                <p><strong>{{ comm.user.username }}</strong>:{{comm.comment}} </p>
                 {% endfor %}
-
+                <em>Posted {{up.pub_date|timesince}} ago </em>
                 <form id='comment' action="/comment/{{up.id}}" method="post" enctype="multipart/form-data">
                     {%csrf_token%} {% bootstrap_form comment_form %}
                     <input type="submit" class="btn btn-primary btn-sm" value="comment">

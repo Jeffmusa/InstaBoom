@@ -115,9 +115,8 @@ def comment(request,id):
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
-            
             comment.user = request.user
-            comment.image= upload
+            comment.post= upload
             comment.save()
             print(comment)
         return redirect('/')
