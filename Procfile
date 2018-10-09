@@ -1,1 +1,1 @@
-web: gunicorn posthome.wsgi
+web: gunicorn instajboom.wsgi
