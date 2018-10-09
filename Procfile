@@ -1,1 +1,1 @@
-web: gunicorn instaboom.wsgi
+web: gunicorn Instaboom.wsgi
