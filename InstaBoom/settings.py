@@ -30,7 +30,7 @@ EMAIL_PORT = 587
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['instajboom.herokuapp.com','127.0.0.1']
 LOGIN_REDIRECT_URL = 'welcome'
 
 
