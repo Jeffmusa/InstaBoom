@@ -11,39 +11,67 @@
 
             <div class="panel" style="width:500px">
 
-                <div class="card-header" style="padding:20px; ">
-                    
-                    {% if up.user.profile.pro_photo %}                                                                                                           
-                  <img src="{{up.user.profile.pro_photo.url}}" alt="Avatar" class="img-responsive" style="border-radius:70%; width:40px;height:40px;"> <a href="/profiles/{{up.user.id}}" style="color:black" ><strong> {{ up.user.username }} </strong></a>
-            
-                  {% else %}
-                        <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:70px;">
-                        {{ up.user.username }}
-                        {% endif %}
+                <div class="card-header" style="padding:5px; ">
+
+                    {% if up.user.profile.pro_photo %}
+                    <!-- <img src="{{up.user.profile.pro_photo.url}}" alt="Avatar" class="img-responsive" style="border-radius:70%; width:40px;height:40px;"> <a href="/profiles/{{up.user.id}}" style="color:black">{{ up.user.username }}</a> -->
+                    <section> <img style="border-radius: 50% ; padding: 0.15rem; background: linear-gradient(to right bottom, #d82c66, #c92e3b, #e15e43, #f3813f, #ffa63e);" class=" img-circle" src="{{up.user.profile.pro_photo.url}}" alt="" width="50px" height="50px"">  <a href="/profiles/{{up.user.id}}" style="color:black"><strong> {{ up.user.username }}</strong></a></a></section>
+                    {% else %}
+                    <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:70px;"> {{up.user.username }} {% endif %}
 
                 </div>
-                <br>
+                <hr>
                 <img src="{{up.image.url}}" alt="Image" style="height:400px; width:500px">
                 <a href="#comment">
-                <img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-69-512.png" style="height:60px;width:70px">
-            </a>
+                    <img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-69-512.png" style="height:60px;width:70px">
+                </a>
                 <hr>
 
                 <p><strong>{{ up.user.username }}</strong>:{{up.caption}}</p>
                 <span>Posted {{up.pub_date|timesince}} ago </span>
+               <h1> {{ up.comments.all|length}} </h1>
 
-
+                {% for comm in up.comments.all %}
+                <p>{{comm.comment}} </p>
+                {% endfor %}
 
                 <form id='comment' action="/comment/{{up.id}}" method="post" enctype="multipart/form-data">
                     {%csrf_token%} {% bootstrap_form comment_form %}
                     <input type="submit" class="btn btn-primary btn-sm" value="comment">
                 </form>
-                {% for comm in up.comments.all %}
-                </b>:{{comm.comment}} {% endfor %}
+               
             </div>
             <br><br><br> {% endfor %}
         </div>
-        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6"></div>
+        <div class="col-lg-4">
+           
+                
+                       
+               <div class="card">
+                    <div class="card-header" style="margin-left: 120px;width: 300px;">
+                               {% if user.profile.pro_photo %}
+     <section><img style="border-radius: 50% ; padding: 0.15rem;" class=" img-circle" src="{{user.profile.pro_photo.url}}" alt="" width="50px" height="50px"> <a href="/profile" style="color:black"><strong> {{user.username}}</strong></a></section>
+      {% else %}
+      <section>  <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class=" img-circle" style="border-radius:70%; height:170px;"></section>
+  {% endif %}
+                        </div>
+                <div class="div" style="background-color: #eee; margin-left: 120px; margin-top: 50px; width: 300px; height: 300px; ; overflow-x: hidden; overflow-y: scroll;">
+                        
+                    
+                    {% for profile in pr %}
+                    {% if profile.user.profile.pro_photo %}
+                    <section> <img style="border-radius: 50% ; padding: 0.15rem; background: linear-gradient(to right bottom, #d82c66, #c92e3b, #e15e43, #f3813f, #ffa63e);" class=" img-circle" src="{{profile.user.profile.pro_photo.url}}" alt="" width="50px" height="50px"><a href="/profiles/{{profile.user.id}}" style="color:black"> {{profile.user.username}}</a></section> <br>
+                    {% else %}
+                    <img style="border-radius: 50% ; padding: 0.15rem; background: linear-gradient(to right bottom, #d82c66, #c92e3b, #e15e43, #f3813f, #ffa63e);" class=" img-circle" src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="" width="50px" height="50px""> {{profile.user.username}} </section> <br> 
+
+                    {% endif %}
+                    
+                
+                  {% endfor %}
+                
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -22,7 +22,7 @@
             <span class="glyphicon glyphicon-option-horizontal" data-toggle="modal" data-target="#myModal"></span>
          
         </h3>
-        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4"><strong>{{posts|length}}</strong> posts</div>
+        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4"><strong>{{post|length}}</strong> posts</div>
         <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">0 Followers</div>
         <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">0 Following</div>
         <br>
@@ -64,14 +64,17 @@
           
             
               {% if post %}
+                <h1 class="text-center">{{profile.user.username}}'s Posts</h1>
        
                   {% for post in post %}
                   
                   <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3" style="margin-right:20px">
                     <div class="tumbnail">
                     <img src="{{post.image.url}}" width="300px" height="300px" alt="">
+                    <br>
                   </div>
               </div>
+              
                   {% endfor %}
               
               

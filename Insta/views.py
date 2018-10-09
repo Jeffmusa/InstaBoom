@@ -69,13 +69,15 @@ def activate(request, uidb64, token):
 @login_required(login_url='/accounts/login/')
 def welcome(request):
     date = dt.date.today()
+    pr = Profile.objects.all()
     comment_form = CommentForm()
     images = Image.objects.all()
-    return render(request, 'home.html',{"date": date,"comment_form":comment_form, "images":images})
+    return render(request, 'home.html',{"date": date,"comment_form":comment_form, "images":images,"pr":pr})
 
 
 def profile(request):
     images = Image.objects.all()
+    pr = Profile.objects.all()
     profile = Profile.objects.filter(user=request.user)
     current_user = request.user
     posts = Image.objects.filter(user=current_user)
@@ -86,7 +88,7 @@ def profile(request):
             image_form.save()
         else:
             image_form = ProfileForm()
-            return render(request, 'profile.html', {"image_form": image_form,"posts":posts,"profile":profile,"images":images})
+            return render(request, 'profile.html', {"image_form": image_form,"posts":posts,"profile":profile,"images":images,"pr":pr})
     return render(request, 'profile.html', {"image_form": image_form,"posts":posts,"profile":profile,"images":images})
 
     
@@ -113,9 +115,11 @@ def comment(request,id):
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
+            
             comment.user = request.user
             comment.image= upload
             comment.save()
+            print(comment)
         return redirect('/')
 
 
@@ -133,7 +137,8 @@ def search_results(request):
 
 def profiles(request,id):
     profile = Profile.objects.get(user_id=id)
-    post=Image.objects.filter(user_id=request.user.id)
+    post=Image.objects.filter(user_id=id)
+   
                        
     return render(request,'pros.html',{"profile":profile,"post":post})
     

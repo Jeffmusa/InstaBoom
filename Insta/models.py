@@ -60,7 +60,7 @@ class Image(models.Model):
     #     self.update()
 
 class Comment(models.Model):
-    comment = models.CharField(max_length =30,null=True)
+    comment = models.CharField(max_length =80,null=True)
     user = models.ForeignKey(User,related_name='comments',null=True)
     post = models.ForeignKey(Image,related_name='comments',null=True)
 
