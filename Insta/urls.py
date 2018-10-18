@@ -8,6 +8,7 @@ urlpatterns=[
     url('^$',views.welcome,name = 'welcome'),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^profiles/(\d+)',views.profiles,name='profiles'),
+    url(r'^full/(\d+)',views.full,name='full'),
     url(r'^profile/',views.profile,name = 'profile'),
     url(r'^accounts/',include('registration.backends.simple.urls')),
     url(r'^comment/(\d+)',views.comment,name='comment'),

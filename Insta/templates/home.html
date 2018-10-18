@@ -15,13 +15,15 @@
 
                     {% if up.user.profile.pro_photo %}
                     <!-- <img src="{{up.user.profile.pro_photo.url}}" alt="Avatar" class="img-responsive" style="border-radius:70%; width:40px;height:40px;"> <a href="/profiles/{{up.user.id}}" style="color:black">{{ up.user.username }}</a> -->
-                    <section> <img style="border-radius: 50% ; padding: 0.15rem; background: linear-gradient(to right bottom, #d82c66, #c92e3b, #e15e43, #f3813f, #ffa63e);" class=" img-circle" src="{{up.user.profile.pro_photo.url}}" alt="" width="50px" height="50px"">  <a href="/profiles/{{up.user.id}}" style="color:black"><strong> {{ up.user.username }}</strong></a></a></section>
+                    <section> <img style="border-radius: 50% ; padding: 0.15rem; background: linear-gradient(to right bottom, #d82c66, #c92e3b, #e15e43, #f3813f, #ffa63e);" class=" img-circle" src="{{up.user.profile.pro_photo.url}}" alt="" width="50px" height="50px">  <a href="/profiles/{{up.user.id}}" style="color:black"><strong> {{ up.user.username }}</strong></a></a></section>
                     {% else %}
                     <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:70px;"> {{up.user.username }} {% endif %}
 
                 </div>
                 <hr>
-                <img src="{{up.image.url}}" alt="Image" style="height:400px; width:500px">
+                <a href="/full/{{up.id}}">
+                    <img src="{{up.image.url}}" alt="Image" class="img-responsive" style="height:100%px; width:500px">
+                </a>
               <section>
                 <a href="#comment">
                     <img src="https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-69-512.png" style="height:60px;width:70px">
@@ -77,4 +79,25 @@
         </div>
     </div>
 </div>
+
+
+<style>
+        @media screen and (max-width: 1280px) {
+          /* .col-md-4 {
+            height:  100px;
+            width: 100px;
+          } */
+        .panel {
+            width: 100px;
+
+        }
+        .img-responsive{
+           height: 250px;
+          width: 100px;
+         }
+
+       
+         
+        }
+  </style>      
 {% endblock %}

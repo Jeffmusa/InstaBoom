@@ -1,0 +1,27 @@
+{% extends 'base.html'%} {% load staticfiles %} {{form.media}} {% load bootstrap3 %} {{ block.super }} {% block content %}
+<div class="container">
+
+
+    {% for up in post %}
+    <div class="text-center">
+        <img src="{{up.image.url}}" alt="Image" class="img-responsive" style="height:440px;width:550px;margin-left:300px;">
+    </div>
+    <div class="text-center">
+      <H1>IMAGE DETAILS</H1>
+    </div>
+    <div class="text-center">
+
+        {% if up.user.profile.pro_photo %}
+        <section><h3>This image was posted by:<a href="/profiles/{{up.user.id}}" style="color:black"><strong> {{ up.user.username }}</strong></a> {{up.pub_date|timesince}} ago</h3> <img style="border-radius: 50% ; padding: 0.15rem; background: linear-gradient(to right bottom, #d82c66, #c92e3b, #e15e43, #f3813f, #ffa63e);" class=" img-circle" src="{{up.user.profile.pro_photo.url}}" alt="" width="50px" height="50px"><a href="/profiles/{{up.user.id}}" style="color:black"><strong> {{ up.user.username }}'s profile page</strong></a></section>
+        {% else %}
+        <h3>This image was posted by:<strong> {{ up.user.username }}</strong> {{up.pub_date|timesince}} ago</h3> <img style="border-radius: 50% ; padding: 0.15rem; background: linear-gradient(to right bottom, #d82c66, #c92e3b, #e15e43, #f3813f, #ffa63e);" class=" img-circle" src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="" width="50px" height="50px">
+
+        {% endif %}
+        <h4>So far it has {{ up.comments.all|length}}  comments </h4>
+    </div>
+
+
+    {% endfor %}
+
+</div>
+{% endblock %}

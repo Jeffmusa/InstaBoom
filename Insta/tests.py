@@ -55,4 +55,26 @@ class ProfileTestClass(TestCase):
 
 
 
+class CommentTestClass(TestCase):
 
+    def setUp(self):
+        self.Com= Comment(comment = 'cool')
+
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.Com,Comment))
+
+
+    def test_data(self):
+        self.assertTrue(self.Com.comment,"test")
+
+    def test_delete(self):
+        com = Comment.objects.filter(id=1)
+        com.delete()
+        ment = Comment.objects.all()
+        self.assertTrue(len(ment)==0)
+
+    def test_save_method(self):
+        self.Com.save_comment()
+        co = Comment.objects.all()
+        self.assertTrue(len(co) > 0)

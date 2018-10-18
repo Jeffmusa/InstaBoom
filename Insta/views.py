@@ -72,6 +72,7 @@ def welcome(request):
     pr = Profile.objects.all()
     comment_form = CommentForm()
     images = Image.objects.all()
+    
     return render(request, 'home.html',{"date": date,"comment_form":comment_form, "images":images,"pr":pr})
 
 
@@ -140,4 +141,9 @@ def profiles(request,id):
    
                        
     return render(request,'pros.html',{"profile":profile,"post":post})
-    
+
+def full(request,id):
+    post=Image.objects.filter(id=id)
+   
+                       
+    return render(request,'full.html',{"post":post})
