@@ -1,73 +1,83 @@
-#  Instaboom
+# [Instagram](https://instajboom.herokuapp.com)
+#### Web clone of the Instagram app
 
-Instaboom is a python web app done with Django that allows users to share their best photos and have fun.
+#### By **[Jeff Musa](https://github.com/jeffmusa)**
 
-## Getting Started
-To get  started you will need to clone this repo.
-```
-git clone https://github.com/Jeffmusa/InstaBoom
+## Description
+This is a simple web clone of the instagram website. A user can create an account and sign into it. 
+The site supports uploading images, and commenting on what other users have uploaded. 
+users can view photos uploaded by other users in the home page of app.
 
-cd  InstaBoom
-```
+## Specifications
+Find the specs [here](https://github.com/DevWaweru/InstaBoom/blob/master/SPECS.md)
+
+## Set Up and Installations
 
 ### Prerequisites
+1. Ubuntu Software
+2. Python3.6
+3. [Postgres](https://www.postgresql.org/download/)
+4. [python virtualenv](https://gist.github.com/Geoyi/d9fab4f609e9f75941946be45000632b)
 
-Here is what makes the app to run perfectly.
+### Clone the Repo
+Run the following command on the terminal:
+`git clone https://github.com/jeffmusa/InstaBoom.git && cd InstaBoom`
 
-```
-- Django Framework
-- Python3.6
-- Postgres
-- Python virtualenv
-```
-
-### Installing
-
-Activate virtual environment using python3.6 as default handler virtualenv -p /usr/bin/python3.6 venv && source venv/bin/activate
-
-Install dependancies that will create an environment for the app to run pip3 install -r requirements.txt
-
-
-
-Make sure you have Python3.6.5 installed to avoid challenges.
-
-## Running the tests
-
-Run tests with this command:
-```
-python3.6 manage.py test
+### Activate virtual environment
+Activate virtual environment using python3.6 as default handler
+```bash
+virtualenv -p /usr/bin/python3.6 venv && source venv/bin/activate
 ```
 
+### Install dependancies
+Install dependancies that will create an environment for the app to run
+`pip3 install -r requirements.txt`
 
-### Break down into end to end tests
+### Create the Database
+```bash
+psql
+CREATE DATABASE insta;
+```
+### .env file
+Create .env file and paste paste the following filling where appropriate:
+```python
+SECRET_KEY = '<Secret_key>'
+DBNAME = 'insta'
+USER = '<Username>'
+PASSWORD = '<password>'
+DEBUG = True
 
-The tests are to check tha app's functionality.
-Only to be sure of what the app does.
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '<your-email>'
+EMAIL_HOST_PASSWORD = '<your-password>'
+```
+### Run initial Migration
+```bash
+python3.6 manage.py makemigrations gram
+python3.6 manage.py migrate
+```
 
+### Run the app
+```bash
+python3.6 manage.py runserver
+```
+Open terminal on `localhost:8000`
 
-## Deployment
+## Known bugs
+Like and Follow functionality does not work
 
-Here is a documentation on how to deploy this app to heroku.
-You can find it on [this link](https://github.com/Jeffmusa/Deployment_to_heroku_django).
+## Technologies used
+    - Python 3.6
+    - HTML
+    - Bootstrap 4
+    - JavaScript
+    - Heroku
+    - Postgresql
 
-## Built With
+## Support and contact details
+Contact me on developer.waweru@gmail.com for any comments, reviews or advice.
 
-* [Python3.6.5](https://docs.python.org/3/)
-* [Django MVC framework](https://docs.djangoproject.com/en/2.1/) - The web framework used
-* [Postgresql](https://www.postgresql.org/docs/) - For databases
-* [Heroku](https://dashboard.heroku.com) -For hosting the app
-* HTML, CSS and Bootstrap
-
-
-
-## Authors
-
-* **Jeff Musa** 
-
-
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-
+### License
+Copyright (c) **Jeff Musa**
