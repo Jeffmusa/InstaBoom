@@ -9,7 +9,7 @@ The site supports uploading images, and commenting on what other users have uplo
 users can view photos uploaded by other users in the home page of app.
 
 ## Specifications
-Find the specs [here](https://github.com/DevWaweru/InstaBoom/blob/master/SPECS.md)
+Find the specs [here](https://github.com/jeffmusa/InstaBoom/blob/master/SPECS.md)
 
 ## Set Up and Installations
 
