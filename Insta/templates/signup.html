@@ -1,4 +1,7 @@
 {% load bootstrap3 %} 
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
+{% load material_form %}
 
 {% block styles %}
 {% bootstrap_css %}
@@ -41,6 +44,22 @@
         <p class="forgot">Already have an account? <a href="/accounts/login">Login</a></p>
     </div>
   </form>
+      <!-- <form method="post" class="text-center">
+                {% csrf_token %}
+                {% form form=form %}{% endform %}
+            <p>
+              {{ field.label_tag }}<br> {{ field }} {% if field.help_text %}
+              <small style="display: none">{{ field.help_text }}</small>
+              {% endif %} {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+              {% endfor %}
+            </p>
+            
+            <button class="waves-effect waves-light btn modal-trigger" type="submit">Sign up</button>
+            
+              <p class="forgot">Already have an account? <a href="/accounts/login">Login</a></p>
+            
+          </form> -->
 </div>
 </div>
 </div>

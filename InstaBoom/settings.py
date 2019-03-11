@@ -35,7 +35,7 @@ EMAIL_PORT = 587
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['instajboom.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = 'welcome'
 
 
@@ -50,6 +50,7 @@ UPLOADCARE = {
 INSTALLED_APPS = [
     
     'tinymce',
+    'material',
     'Insta.apps.InstaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
