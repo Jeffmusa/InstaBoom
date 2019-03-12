@@ -1,34 +1,39 @@
-{%extends "registration/base.html"%}
-{% load bootstrap3 %}
+
+{% load bootstrap4 %}
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
+{% load material_form %}
+{% block styles %} {% bootstrap_css %}
+{% endblock %}
 {% block content %}
-<div class="container" >
-  <div class="row" >
+<div class="container">
+  <div class="row">
     <!-- Empty div -->
-    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
- 
-    </div>
-    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4" style="margin-top:10px">
-      {% if form.errors %}
-        <p> Password or Username is incorrect </p>
-      {% endif %}
+    <div class="col-md-4">
+
+        </div>
+    <div class="col-md-4">
+     
       <div class="panel panel-default">
 
-          <h3 class="text-center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="" style="height:50%; width:50%;">
-          </h3>
-      
+        <div class="panel-heading">
+          <h3 class="text-center">Sign In</h3>
+        </div>
         <div class="panel-body">
-
+            {% if form.errors %}
+            <p style="color:red;"> Password or Username is incorrect </p>
+          {% endif %}
           <form  action="/accounts/login/" method="post">
+            <h3>
             {% csrf_token %}
-            {% bootstrap_form form%}
+            {% form form=form %}{% endform %}
 
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-md" value="Login">
+            <div class="text-center">
+                <button type="submit" name="_submit" class="btn">Login</button>
             </div>
             <div class="section">
-                    <p class="forgot">Don't have an account? <a href="/signup">Sign-Up</a></p>
-                </div>
-
+                <p class="forgot">Don't have an account? <a href="/signup">Sign-Up</a></p>
+            </div>
             <input type="hidden" name="next" value="{{next}}">
 
           </form>
@@ -39,22 +44,8 @@
 
     </div>
     <!-- empty div -->
-    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4"></div>
+    <div class="col-md-4"></div>
   </div>
 </div>
-
-<style>
-@media screen and (max-width: 1280px) {
-  .col-md-4 {
-    height:  200px;
-    width: 100%;
-  
-  }
- .container{
-   font-size: 30px;
- }
-}
-
-</style>
 
 {% endblock %}
