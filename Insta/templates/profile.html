@@ -19,17 +19,31 @@
     <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
       <div class="row">
         {% if user.is_authenticated %}
-        <h3><stong>{{user.username}}</stong><a class="btn btn-lg btn-edit" href="#" style="color:black"><h4><span data-toggle="modal" data-target="#edit">Edit Profile</span> </h4></a>
-          <div class="modal fade" id="edit" role="dialog" style="background-color:rgb(80, 207, 29)">
-            <div class="modal-dialog">
-
-
-              <form action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
-                {%csrf_token%} {% bootstrap_form image_form %}
-                <input type="submit" class="btn btn-success btn-lg" value="Post">
-              </form>
+      
+        <h3><stong>{{user.username}}</stong><a class="btn btn-lg btn-edit" href="#" style="color:black"><h4><span data-toggle="modal" data-target="#Modal">Edit Profile</span> </h4></a>
+         
+            
+            <!-- Modal -->
+            <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="text-center" id="myModalLabel">Edit Profile</h3>
+                  </div>
+                  <div class="modal-body">
+                      <form action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
+                        {%csrf_token%} {% bootstrap_form image_form %}
+                        <input type="submit" class="btn btn-success" value="Post">
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Save changes</button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
           <span class="fa fa-cog" data-toggle="modal" data-target="#myModal"></span>
         </h3>
         <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4"><strong>{{posts|length}}</strong> posts</div>
@@ -85,7 +99,8 @@
               </div>
                   {% endfor %}
               
-              
+              <!-- Button trigger modal -->
+
               {% else %}
               <H1>PLEASE POST</H1>
               {% endif %}
