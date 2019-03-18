@@ -1,0 +1,121 @@
+{% extends 'base.html'%} {% load staticfiles %} {{form.media}} {% load bootstrap3 %}
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> {% block content %} {{ block.super }}
+
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1"></div>
+    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+      {% if user.profile.pro_photo %}
+      <img src="{{user.profile.pro_photo.url}}" alt="Avatar" class="img-responsive" style="border-radius:100%; height:150px; width: 150px;">
+      {% else %}
+      <img src="https://mbtskoudsalg.com/images/user-avatar-png-1.png" alt="Avatar" class="img-responsive" style="border-radius:70%; height:170px;">
+      <a style="color:black"><h4><span data-toggle="modal" data-target="#edit">Edit Profile</span> </h4></a>
+  {% endif %}
+    </div>
+
+    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">
+      <div class="row">
+        {% if user.is_authenticated %}
+      
+        <h3><stong>{{user.username}}</stong><a class="btn btn-lg btn-edit" href="#" style="color:black"><h4><span data-toggle="modal" data-target="#Modal">Edit Profile</span> </h4></a>
+         
+            
+            <!-- Modal -->
+            <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="text-center" id="myModalLabel">Edit Profile</h3>
+                  </div>
+                  <div class="modal-body">
+                      <form action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
+                        {%csrf_token%} {% bootstrap_form image_form %}
+                        <input type="submit" class="btn btn-success" value="Post">
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <span class="fa fa-cog" data-toggle="modal" data-target="#myModal"></span>
+        </h3>
+        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4"><strong>{{posts|length}}</strong> posts</div>
+        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">0 Followers</div>
+        <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4">0 Following</div>
+        <br>
+       <h3>{{user.profile.bio}}</h3>
+      </div>
+
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content" style="padding:90px; margin-top:60px;">
+            <ul class="text-center">
+              <div class="modal-header">
+            <div class="card">
+                  <a href="/accounts/password/change" style="text-decoration:none;color:black">Change Password</a>
+              </div>
+
+<br>
+                <div class="card">
+                  <a href="/logout" style="text-decoration:none;color:rgb(255, 36, 36)">Logout</a>
+              </div>
+<br>
+              <div class="card">
+                  <a href="/profile" style="text-decoration:none;color:black">Cancel</a>
+              </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3"></div>
+  </div>
+  <hr>
+  <div class="row">
+    <ul class="nav" id="my" role="tablist">
+     
+       
+          
+            
+              {% if posts %}
+       <h1 class="text-center">My posts</h1>
+                  {% for post in posts %}
+                  
+                  <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3" style="margin-right:20px">
+                    <div class="tumbnail">
+                    <img src="{{post.image.url}}" width="300px" height="300px" alt="">
+                  </div>
+              </div>
+                  {% endfor %}
+              
+              <!-- Button trigger modal -->
+
+              {% else %}
+              <H1>PLEASE POST</H1>
+              {% endif %}
+       
+         
+       
+      
+    
+     
+  </div>
+
+</div>
+{% else %}
+
+  <a class='btn btn-default' href="/accounts/login">Login</a>
+
+
+{% endif %} {% endblock %}

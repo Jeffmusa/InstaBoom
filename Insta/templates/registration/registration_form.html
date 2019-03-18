@@ -1,0 +1,34 @@
+{%extends "registration/base.html"%} {% load bootstrap3 %}
+{% block content %}
+<div class="container">
+    <div class="row signup-page">
+        <div class="col-md-6">
+            <img src="https://instugrum.herokuapp.com/static/img/43cc71bb1b43.png" alt="Phone images">
+        </div>
+        <div class="col-md-6">
+            {% if form.errors %}
+                <p>Some information may be incorrect</p>
+            {% endif %}
+            <div class="signup-fields">
+                <div class="section">
+                    <h1>Instugrum</h1>
+                    <div class="form-section">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary btn-sm" value="Sign up">
+                            </div>
+                            <input type="hidden" name="next" value="{{next}}">
+                        </form>
+                    </div>
+                </div>
+                <div class="section">
+                    <p>Have an account? <a href="/accounts/login/">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
