@@ -1,53 +1,105 @@
-{% include 'material/includes/material_css.html' %}
-{% include 'material/includes/material_js.html' %}
-{% load material_form %}
-{% load bootstrap4 %} {% block styles %} {% bootstrap_css %}
-{% endblock %}
-
-
-
-      {% block content %}
-
-<body>
-    
-    <div class="container">
-    <div class="row">
-        <div class="col-md-4"></div>
-  <div class="col-md-4">
-     
-    <h3 class="text-center">Sign up</h3>
-    {% if form.errors %}
-    <p style="color:red;"> Something is wrong </p>
-  {% endif %}
-          <form method="post" class="text-center">
-                {% csrf_token %}
-                {% form form=form %}{% endform %}
-            <p>
-              {{ field.label_tag }}<br> {{ field }} {% if field.help_text %}
-              <small style="display: none">{{ field.help_text }}</small>
-              {% endif %} {% for error in field.errors %}
-              <p style="color: red">{{ error }}</p>
-              {% endfor %}
-            </p>
-            
-            <button class="waves-effect waves-light btn modal-trigger" type="submit">Sign up</button>
-            
-              <p class="forgot">Already have an account? <a href="/accounts/login">Login</a></p>
-            
-          </form>
+{%extends "registration/base.html"%} {% load bootstrap3 %}
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Miltonian" rel="stylesheet">
+<div class="container">
+    <div class="row signup-page">
+        <div class="col-md-6">
+            <body>
+                
+            </body>
+            <img id="img" src="https://instugrum.herokuapp.com/static/img/43cc71bb1b43.png" alt="Phone images">
         </div>
+        <div class="col-md-6" id="su">
+            {% if form.errors %}
+                <p>Some information may be incorrect</p>
+            {% endif %}
+            <div class="signup-fields">
+                <div class="section">
+                    <div class="text-center">
+                    <img width="200px" height="80px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" alt="">
+
+                    <h3>Sign up for instagram</h3>
+                </div>
+                    <div class="form-section">
+                        <form  method="POST">
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+                            <div class="form-group">
+                                <div class="text-center">
+                                <input type="submit" class="btn purple-gradient btn-md" value="Sign up">
+                            </div>
+                            </div>
+                            <input type="hidden" name="next" value="{{next}}">
+                        </form>
+                    </div>
+                </div>
+                <div class="section">
+                    <p>Have an account? <a href="/accounts/login/">Sign In</a></p>
+                </div>
+            </div>
         </div>
     </div>
-</body>
-
+</div>
 <style>
-  /* @media screen and (max-width: 1280px) {
-    body {
 
-       font-size: 50px;
-    }
-    
-  } */
+
+@media(max-width: 786px){
+
+#img{
+    display: none;
+}
+}
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+body{font-family:'Nanum Gothic', sans-serif;
+  font-size:14px;
+  color:#777;
+  height: 600px;
+  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+  0% {
+      background-position: 0% 50%
+  }
+  50% {
+      background-position: 100% 50%
+  }
+  100% {
+      background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes Gradient {
+  0% {
+      background-position: 0% 50%
+  }
+  50% {
+      background-position: 100% 50%
+  }
+  100% {
+      background-position: 0% 50%
+  }
+}
+
+@keyframes Gradient {
+  0% {
+      background-position: 0% 50%
+  }
+  50% {
+      background-position: 100% 50%
+  }
+  100% {
+      background-position: 0% 50%
+  }
+}
+#su{
+background-color: rgb(255, 255, 255);
+
+}
+
 </style>
-
 {% endblock %}

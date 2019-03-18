@@ -1,51 +1,96 @@
+{%extends "registration/base.html"%} {% load bootstrap3 %}
 
 {% load bootstrap4 %}
-{% include 'material/includes/material_css.html' %}
-{% include 'material/includes/material_js.html' %}
 {% load material_form %}
 {% block styles %} {% bootstrap_css %}
 {% endblock %}
 {% block content %}
 <div class="container">
-  <div class="row">
-    <!-- Empty div -->
-    <div class="col-md-4">
-
-        </div>
-    <div class="col-md-4">
-     
-      <div class="panel panel-default">
-
-        <div class="panel-heading">
-          <h3 class="text-center">Sign In</h3>
-        </div>
-        <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4"></div>
+        <div class="col-md-4" id="su">
             {% if form.errors %}
-            <p style="color:red;"> Password or Username is incorrect </p>
-          {% endif %}
-          <form  action="/accounts/login/" method="post">
-            <h3>
-            {% csrf_token %}
-            {% form form=form %}{% endform %}
-
-            <div class="text-center">
-                <button type="submit" name="_submit" class="btn">Login</button>
+            <p class="small">Password or Username is incorrect</p>
+            {% endif %}
+            <div class="section">
+                <div class="text-center">
+                    <img width="200px" height="80px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" alt="">
+                </div>                <div class="form-section">
+                    <form action="/accounts/login/" method="POST">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <div class="form-group">
+                          <div class="text-center">
+                            <input type="submit" class="btn purple-gradient btn-md" value="Sign In">
+                          </div>
+                        </div>
+                        <input type="hidden" name="next" value="{{next}}">
+                    </form>
+                </div>
             </div>
             <div class="section">
+                <p>Don't have an account? <a href="/signup">Sign-Up</a></p>
             </div>
-            <input type="hidden" name="next" value="{{next}}">
-            
-          </form>
-          <p class="forgot" style="font-size:20px;">Don't have an account? <a href="/signup">Sign-Up</a></p>
-
         </div>
-
-      </div>
-
+        <div class="col-md-4"></div>
     </div>
-    <!-- empty div -->
-    <div class="col-md-4"></div>
-  </div>
 </div>
+<style>
 
+  /* @media(max-width: 786px){ */
+
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+body{font-family:'Nanum Gothic', sans-serif;
+	font-size:14px;
+	color:#777;
+	height: 600px;
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+#su{
+  background-color: rgb(255, 255, 255);
+  margin-top: 90px;
+  
+}
+/* } */
+</style>
 {% endblock %}
